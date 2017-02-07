@@ -2,6 +2,7 @@
 
 // The Level class contains most of the assets.
 class Level {
+
     constructor(game, number) {
         this.game = game;
         this.number = number;
@@ -13,6 +14,8 @@ class Level {
         this.predator = new Predator(this);
         this.player = new Player(this);
         this.safeArea = new SafeArea(this);
+
+
 
         this.numBoids = 100;
         this.boids = [];
@@ -36,6 +39,7 @@ class Level {
     render() {
         // draw whatever
         // here is some place holder
+      var playerLives = 5;
       var context = this.game.context;
       context.save();
       // draw a gray background
@@ -51,7 +55,22 @@ class Level {
       context.fillRect(0, context.canvas.height - 130, context.canvas.width, 130);
       context.fillRect(0,0, 120, context.canvas.height);
 
-      context.restore();
+      // Heath tiles
+      context.fillStyle = "#C14242";
+      for (let i = 0; i < playerLives; i++){
+        context.rect(context.canvas.width - 208 + i*40, context.canvas.height - 100, 30, 70);
+        context.fillRect(context.canvas.width - 208 + i*40, context.canvas.height - 100, 30, 70);
+        context.stroke();
+      }
+
+      // money
+      context.rect(context.canvas.width-320, context.canvas.height-110, 80, 90);
+      context.fillStyle = "yellow";
+      context.fillRect(context.canvas.width-320, context.canvas.height-110, 80, 90);
+
+      context.fillStyle = "black";
+      context.font = "30px Arial";
+      context.fillText("Money", context.canvas.width-420, context.canvas.height-50);
     }
 
 }

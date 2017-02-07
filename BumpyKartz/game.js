@@ -34,7 +34,6 @@ class Game {
         this.levels.push(new Level(this, i+1));
   }
 
-
   run() {       // called from draw()
     if(this.isRunning) {
         this.render();
@@ -43,7 +42,7 @@ class Game {
   }
 
   render() {    // draw whatever
-    
+
   }
 
 }
